@@ -4,6 +4,11 @@ from django.utils import timezone
 from .forms import PostForm
 from .models import Post
 
+from rest_framework import viewsets
+from .serializers import PostSerializer
+from rest_framework.permissions import IsAuthenticated
+
+
 # Create your views here.
 def post_list(request):
     posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
@@ -43,3 +48,10 @@ def post_edit(request, pk):
     else:
         form = PostForm(instance=post)
     return render(request, 'blog/post_edit.html', {'form': form})
+
+class IntruderImage(viewsets.ModelViewSet):
+    queryset = Post.objects.all()
+    serializer_class = PostSerializer
+    
+    def perform_create(self, serializer):
+        serializer.save(author=self.request.user)
