@@ -1,0 +1,11 @@
+<!-- blog/templates/blog/door_status_detail.html -->
+{% extends 'blog/base.html' %}
+
+{% block content %}
+<h2>Door Status Detail</h2>
+<div>
+    <h3>{{ post.title }}</h3>
+    <p>{{ post.text }}</p>
+    <img src="{{ post.image.url }}" alt="{{ post.title }}">
+</div>
+{% endblock %}
