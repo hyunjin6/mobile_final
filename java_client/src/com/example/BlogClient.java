@@ -73,7 +73,7 @@ public class BlogClient {
                 String imageUrl = jsonObject.getString("image_url");
                 Log.d("BlogClient", "이미지 URL: " + imageUrl);
 
-                LinearLayout linearLayout = findViewById(R.id.linearLayout); // 여기서 R.id.linearLayout는 적절한 레이아웃 ID로 변경해야 합니다.
+                LinearLayout linearLayout = findViewById(R.id.linearLayout);
 
                 ImageView imageView = new ImageView(this);
                 linearLayout.addView(imageView);
